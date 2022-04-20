@@ -84,15 +84,15 @@ function hooks.OnGameStart()
 end
 
 function hooks.OnUpdate()
-    if not HeroesCore.IsEnabled(hooks.enabled) then return end
+    if not Menu.IsEnabled(hooks.enabled) then return end
     if not Heroes.GetLocal() then return end
     if NPC.GetUnitName(myHero) ~= "npc_dota_hero_pudge" then return end
 
     local gameTime = gameTimeFunction()
     if hooks.HeroesCoreTimer < gameTime then
         hooks.HeroesCoreTimer = gameTime + hooks.HeroesCoreTimerInterval
-        onlyOneTeam = HeroesCore.IsEnabled(hooks.onlyOneTeam)
-        clr = HeroesCore.GetValue(hooks.boxColor)
+        onlyOneTeam = Menu.IsEnabled(hooks.onlyOneTeam)
+        clr = Menu.GetValue(hooks.boxColor)
     end
 
     if blockActions then
@@ -109,7 +109,7 @@ function hooks.OnStartSound(sound)
 end
 
 function hooks.OnDraw()
-    if not HeroesCore.IsEnabled(hooks.enabled) then return end
+    if not Menu.IsEnabled(hooks.enabled) then return end
     if not Heroes.GetLocal() then return end
     if heroName ~= "npc_dota_hero_pudge" then return end
 
