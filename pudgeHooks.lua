@@ -12,6 +12,7 @@ local p = {"Hero Specific", "Pudge", "Hook positions"} -- Path to HeroesCore opt
 local font = Renderer.LoadFont("Tahoma", 18, Enum.FontWeight.NORMAL)
 local clr = {}
 
+local lastSpot = Vector(0, 0, 0)
 local blockActions = false -- Var to not allow pudge ruin block
 local onlyOneTeam = true
 
@@ -45,12 +46,12 @@ local hooksPosRadiant = {}
     hooksPosRadiant["ez2"] = Vector(-6890, 4383, 128)
     hooksPosRadiant["ez3"] = Vector(-5144, 6662, 128)
 
-HeroesCore.UseCurrentPath(NPC.GetUnitName(Heroes.GetLocal()) == "npc_dota_hero_pudge")
+    HeroesCore.UseCurrentPath(NPC.GetUnitName(Heroes.GetLocal()) == "npc_dota_hero_pudge")
 
-hooks.enabled = HeroesCore.AddOptionBool(p, "Enabled", true)
-hooks.onlyOneTeam = HeroesCore.AddOptionBool(p, "Only for your current team", true)
-hooks.boxColor = HeroesCore.AddOptionColorPicker(p, "Box color", 255, 255, 255, 255)
-HeroesCore.AddMenuIcon({"Hero Specific", "Pudge"}, "~/heroes_circle/pudge.png") -- путь p более конкретный чем Hero Specific/Pudge
+    hooks.enabled = HeroesCore.AddOptionBool(p, "Enabled", true)
+    hooks.onlyOneTeam = HeroesCore.AddOptionBool(p, "Only for your current team", true)
+    hooks.boxColor = HeroesCore.AddOptionColorPicker(p, "Box color", 255, 255, 255, 255)
+    HeroesCore.AddMenuIcon({"Hero Specific", "Pudge"}, "~/heroes_circle/pudge.png") -- путь p более конкретный чем Hero Specific/Pudge
 
 function hooks.checkCoords(imgX, imgY, mouseX, mouseY)
     local x1, x2 = imgX, imgX+20
@@ -71,6 +72,7 @@ function hooks.drawFromTable(hooksPos)
         if Input.IsKeyDownOnce(mouse1) then
             if hooks.checkCoords(x, y, mouseX, mouseY) then
                 NPC.MoveTo(myHero, pos, false)
+                lastSpot = pos
             end
         end
         ::continue::
@@ -102,7 +104,9 @@ end
 
 function hooks.OnStartSound(sound)
     if ((sound.name == "Hero_Pudge.AttackHookRetract") or (sound.name == "Hero_Pudge.Hook.Retract.Persona")) then
-        blockActions = true
+        if lastSpot:Distance(Entity.GetOrigin(myHero)):Length() < 100 then
+            blockActions = true
+        end
     elseif sound.name == "Hero_Pudge.AttackHookRetractStop" then
         blockActions = false
     end
