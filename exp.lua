@@ -249,6 +249,16 @@ exp.fontColor = Menu.AddOptionColorPicker(p, "Text color", def["r"], def["g"], d
 exp.stealingFontColor = Menu.AddOptionColorPicker(p, "Text color when stealing", steal["r"], steal["g"], steal["b"], steal["a"])
 Menu.AddMenuIcon(p, "~/Overwolf/hard_support.png")
 
+
+HeroesCore.AddOptionIcon(exp.enabled, "~/MenuIcons/Enable/enable_check_boxed.png")
+
+HeroesCore.AddOptionIcon(exp.enabled, "~/MenuIcons/Enable/enable_check_boxed.png")
+HeroesCore.AddOptionIcon(exp.extraInfo, "~/MenuIcons/Enable/enable_ios.png")
+HeroesCore.AddOptionIcon(exp.onlyLane, "~/MenuIcons/Enable/enable_ios.png")
+HeroesCore.AddOptionIcon(exp.fontSize, "~/MenuIcons/size.png")
+HeroesCore.AddOptionIcon(exp.posX, "~/MenuIcons/edit.png")
+HeroesCore.AddOptionIcon(exp.posY, "~/MenuIcons/edit.png")
+
 -- ░█████╗░██╗░░░██╗░██████╗████████╗░█████╗░███╗░░░███╗
 -- ██╔══██╗██║░░░██║██╔════╝╚══██╔══╝██╔══██╗████╗░████║
 -- ██║░░╚═╝██║░░░██║╚█████╗░░░░██║░░░██║░░██║██╔████╔██║
