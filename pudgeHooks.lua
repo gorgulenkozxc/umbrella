@@ -8,7 +8,7 @@ local heroName = NPC.GetUnitName(myHero)
 
 local mouse1 = Enum.ButtonCode.KEY_MOUSE1 -- Var to check if clicked on pos
 
-local p = {"Hero Specific", "Pudge", "Hook positions"} -- Path to HeroesCore options
+local p = {"Hero Specific", "Strength", "Pudge", "Hook positions"} -- Path to HeroesCore options
 local font = Renderer.LoadFont("Tahoma", 18, Enum.FontWeight.NORMAL)
 local clr = {}
 
@@ -48,10 +48,14 @@ local hooksPosRadiant = {}
 
     HeroesCore.UseCurrentPath(NPC.GetUnitName(Heroes.GetLocal()) == "npc_dota_hero_pudge")
 
-    hooks.enabled = HeroesCore.AddOptionBool(p, "Enabled", true)
+    hooks.enabled = HeroesCore.AddOptionBool(p, "Enabled", false)
     hooks.onlyOneTeam = HeroesCore.AddOptionBool(p, "Only for your current team", true)
     hooks.boxColor = HeroesCore.AddOptionColorPicker(p, "Box color", 255, 255, 255, 255)
-    HeroesCore.AddMenuIcon({"Hero Specific", "Pudge"}, "~/heroes_circle/pudge.png") -- путь p более конкретный чем Hero Specific/Pudge
+
+    HeroesCore.AddMenuIcon({"Hero Specific", "Strength", "Pudge"}, "panorama/images/heroes/icons/npc_dota_hero_pudge_png.vtex_c") -- путь p более конкретный чем Hero Specific/Pudge
+    HeroesCore.AddMenuIcon(p, "panorama/images/spellicons/pudge_meat_hook_png.vtex_c")
+    HeroesCore.AddOptionIcon(hooks.enabled, "~/MenuIcons/Enable/enable_check_boxed.png")
+    HeroesCore.AddOptionIcon(hooks.onlyOneTeam, "~/MenuIcons/Enable/enable_ios.png")
 
 function hooks.checkCoords(imgX, imgY, mouseX, mouseY)
     local x1, x2 = imgX, imgX+20
