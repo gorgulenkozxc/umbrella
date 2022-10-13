@@ -12,7 +12,7 @@ showBkb.checkTimerInterval = 0.5
 
 showBkb.enabled = Menu.AddOptionBool(path, "Enabled", false)
 showBkb.offsetX = Menu.AddOptionSlider(path, "Offset X", -200, 200, 0)
-showBkb.offsetY = Menu.AddOptionSlider(path, "Offset Y", -200, 200, 0)
+showBkb.offsetY = Menu.AddOptionSlider(path, "Offset Y", -200, 200, 25)
 
 local function initVariables()
     localPlayer.player = Players.GetLocal()
@@ -35,8 +35,9 @@ local function drawBkbState(id, vecPos)
 end
 
 local function updateBkbs()
+    showBkb.heroes = {}
     for id, hero in pairs(Heroes.GetAll()) do
-        if localPlayer.team ~= Entity.GetTeamNum(hero) then
+        if localPlayer.team ~= Entity.GetTeamNum(hero) and Entity.IsAlive(hero) and NPC.HasItem(hero, "item_black_king_bar") then
             showBkb.heroes[id] = Ability.GetCooldown(NPC.GetItem(hero, "item_black_king_bar"))
         end
     end
