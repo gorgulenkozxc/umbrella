@@ -43,6 +43,10 @@ local function updateBkbs()
     end
 end
 
+function showBkb.OnGameStart()
+    initVariables()
+end
+
 function showBkb.OnUpdate()
     if not Menu.IsEnabled(showBkb.enabled) then return end
 
