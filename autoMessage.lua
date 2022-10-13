@@ -105,7 +105,6 @@ function autoMsg.OnChatEvent(chatEvent)
     if chatEvent.type ~= Enum.DotaChatMessage.CHAT_MESSAGE_HERO_KILL then
         return
     end
-    Log.Write(Player.GetPlayerID(localPlayer))
 
     for k, v in pairs(chatEvent) do
         if (string.sub(k, 1, 8) == "playerid") and (k ~= "playerid_1") and (v == Player.GetPlayerID(localPlayer)) then
