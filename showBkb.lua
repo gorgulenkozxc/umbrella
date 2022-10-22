@@ -37,7 +37,7 @@ end
 local function updateBkbs()
     showBkb.heroes = {}
     for id, hero in pairs(Heroes.GetAll()) do
-        if localPlayer.team ~= Entity.GetTeamNum(hero) and Entity.IsAlive(hero) and NPC.HasItem(hero, "item_black_king_bar") then
+        if localPlayer.team ~= Entity.GetTeamNum(hero) and Entity.IsAlive(hero) and NPC.HasItem(hero, "item_black_king_bar") and NPC.IsVisible(hero) then
             showBkb.heroes[id] = Ability.GetCooldown(NPC.GetItem(hero, "item_black_king_bar"))
         end
     end
