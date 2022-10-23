@@ -28,7 +28,7 @@ local function drawBkbState(id, vecPos)
     local x, y, visible = Renderer.WorldToScreen(vecPos)
     if not visible then return end
     if showBkb.heroes[id] == nil then return end
-    if (showBkb.heroes[id] ~= 0) then return end
+    if showBkb.heroes[id] ~= 0 then return end
 
     Renderer.SetDrawColor(255, 255, 255)
     Renderer.DrawImage(bkbImage, x + settings.offsetX, y + settings.offsetY, 25, 20)

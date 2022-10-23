@@ -62,7 +62,7 @@ local function sendMessage(menuOption)
         i = Menu.GetValue(autoMsg.msgAtTheEnd) + 1
     else
         if menuOption == autoMsg.msgOnKill then
-            if Menu.GetValue(autoMsg.onKillRation) < math.random(0, 100) then
+            if Menu.GetValue(autoMsg.onKillRation) <= math.random(0, 100) then
                 return
             end
             l_messages = messages.onKill
