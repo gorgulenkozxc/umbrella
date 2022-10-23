@@ -1,11 +1,11 @@
 local tg = {}
 
 local path = {'Custom', 'Show tower glyph'}
-local font = Renderer.LoadFont("Tahoma", 18, Enum.FontWeight.NORMAL)
+local font = Renderer.LoadFont('Tahoma', 18, Enum.FontWeight.NORMAL)
 
 tg.enabled = Menu.AddOptionBool(path, 'Enabled', false)
 tg.behaviour = Menu.AddOptionCombo(path, 'Behaviour', {'All', 'Only enemy', 'Only ally'}, 1)
-tg.color = Menu.AddOptionColorPicker(path, "Text color", 255, 255, 255, 255)
+tg.color = Menu.AddOptionColorPicker(path, 'Text color', 255, 255, 255, 255)
 tg.lasthit = Menu.AddOptionBool(path, 'Try last hit', false)
 
 local localPlayer, localHero
