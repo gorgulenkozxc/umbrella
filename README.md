@@ -14,3 +14,5 @@ Makes the BKB badge more visible by placing it under the enemy hero model. Badge
 Scripts adds a timer next to the tower, which shows how much time is left until the end of the glyph. Also can automatically last hit the tower. Made solely by [request](https://uc.zone/threads/request-fortified-remaining-duration-and-auto-last-hit-tower.6150)
 ## [nyxDamage](https://github.com/gorgulenkozxc/umbrella/blob/master/nyxDamage.lua)
 Calculates damage from attack, impale, mana burn, vendetta and dagon considering enemy armor and magic resists
+## [CMRadius](https://github.com/gorgulenkozxc/umbrella/blob/master/CMRadius.lua)
+Uses a console command to draw the range of the Freezing Field
